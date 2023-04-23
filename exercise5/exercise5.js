@@ -12,11 +12,17 @@ const useRequest = url => {
 
 const displayResult = async (page, limit) => {
    const baseUrl = 'https://picsum.photos/v2/list';
-   let cards = '';
    const url = `${baseUrl}?page=${page}&limit=${limit}`;
    const apiData = await useRequest(url);
 
-   apiData.forEach(item => {
+   localStorage.setItem("pictures", JSON.stringify(apiData));
+   setResultNodeContent(apiData);
+}
+
+const setResultNodeContent = (newPictures) => {
+   let cards = '';
+
+   newPictures.forEach(item => {
       const cardBlock = `
          <div class="card">
             <img
@@ -28,7 +34,6 @@ const displayResult = async (page, limit) => {
       `;
       cards += cardBlock;
    });
-
    resultNode.innerHTML = cards;
 }
 
@@ -53,6 +58,12 @@ const checkInputValues = (page, limit) => {
    }
 
    return true;
+};
+
+const loadPicturesFromLocalStorage = () => {
+   const pictures = JSON.parse(localStorage.getItem("pictures"));
+
+   setResultNodeContent(pictures);
 }
 
 form.addEventListener("submit", event => {
@@ -67,3 +78,5 @@ form.addEventListener("submit", event => {
 
    displayResult(page, limit);
 });
+
+loadPicturesFromLocalStorage();
