@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="style.css">
+   <script src="exercise5.js" defer></script>
+</head>
+
+<body>
+   <form class="j-form">
+      <div class="input-container">
+         <label class="input-label" for="page">Номер страницы</label>
+         <input class="input j-input-page" id="page" name="page" required>
+         <p class="warning j-page-warning"></p>
+      </div>
+      <div class="input-container">
+         <label class="input-label" for="limit">Лимит</label>
+         <input class="input j-input-limit" id="limit" name="limit" required>
+         <p class="warning j-limit-warning"></p>
+      </div>
+      <button class="btn j-btn-submit">Submit</button>
+   </form>
+   <div class="result j-result"></div>
+</body>
+
+</html>
