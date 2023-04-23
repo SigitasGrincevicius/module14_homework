@@ -61,9 +61,12 @@ const checkInputValues = (page, limit) => {
 };
 
 const loadPicturesFromLocalStorage = () => {
-   const pictures = JSON.parse(localStorage.getItem("pictures"));
+   const picturesString = localStorage.getItem("pictures");
 
-   setResultNodeContent(pictures);
+   if (picturesString === null) {
+      return;
+   }
+   setResultNodeContent(JSON.parse(picturesString));
 }
 
 form.addEventListener("submit", event => {
